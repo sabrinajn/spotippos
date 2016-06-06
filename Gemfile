@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 gem 'sinatra'
 gem 'activemodel'
+gem 'activerecord'
+gem 'mysql2'
 
 group :test, :development do
   gem 'rspec'

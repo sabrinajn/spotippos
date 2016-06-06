@@ -8,7 +8,7 @@ require 'rspec'
 require 'rack/test'
 
 Before do
-  $properties = []
+  Spotippos::Property.delete_all
 end
 
 class SpotipposWorld

@@ -4,12 +4,17 @@ GEM
     activemodel (4.2.6)
       activesupport (= 4.2.6)
       builder (~> 3.1)
+    activerecord (4.2.6)
+      activemodel (= 4.2.6)
+      activesupport (= 4.2.6)
+      arel (~> 6.0)
     activesupport (4.2.6)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    arel (6.0.3)
     builder (3.2.2)
     coderay (1.1.1)
     cucumber (2.3.3)
@@ -31,6 +36,7 @@ GEM
     minitest (5.9.0)
     multi_json (1.12.1)
     multi_test (0.1.2)
+    mysql2 (0.4.4)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -72,7 +78,9 @@ PLATFORMS
 
 DEPENDENCIES
   activemodel
+  activerecord
   cucumber
+  mysql2
   pry
   pry-nav
   rack-test
