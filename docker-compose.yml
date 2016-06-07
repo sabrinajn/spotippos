@@ -1,0 +1,14 @@
+db:
+  image: mysql:latest
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+
+web:
+  build: .
+  command: bundle exec rackup -p 9292 config.ru
+  ports:
+    - "9292:9292"
+  links:
+    - db
