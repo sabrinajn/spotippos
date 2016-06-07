@@ -1,22 +1,22 @@
-require "./spotippos"
+require "./config/spotippos"
 
 namespace :db do
   desc "Create DBs"
   task :create do
-    create(YAML::load(File.open('database.yml'))["development"])
-    create(YAML::load(File.open('database.yml'))["test"])
+    create(YAML::load(File.open('./config/database.yml'))["development"])
+    create(YAML::load(File.open('./config/database.yml'))["test"])
   end
 
   desc "Do migrations"
   task :migrate_up do
-    migrate_up(YAML::load(File.open('database.yml'))["development"])
-    migrate_up(YAML::load(File.open('database.yml'))["test"])
+    migrate_up(YAML::load(File.open('./config/database.yml'))["development"])
+    migrate_up(YAML::load(File.open('./config/database.yml'))["test"])
   end
 
   desc "Do migrations"
   task :migrate_down do
-    migrate_down(YAML::load(File.open('database.yml'))["development"])
-    migrate_down(YAML::load(File.open('database.yml'))["test"])
+    migrate_down(YAML::load(File.open('./config/database.yml'))["development"])
+    migrate_down(YAML::load(File.open('./config/database.yml'))["test"])
   end
 end
 
