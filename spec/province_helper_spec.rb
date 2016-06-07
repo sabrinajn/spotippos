@@ -3,7 +3,7 @@ require 'spec_helper.rb'
 describe Spotippos::ProvinceHelper do
 
   describe '.parse' do
-    let(:provinces) { Spotippos::ProvinceHelper.parse('provinces.json') }
+    let(:provinces) { Spotippos::ProvinceHelper.parse('config/provinces.json') }
 
     it 'parses all provinces' do
       expect(provinces.length).to eq 6
@@ -24,7 +24,7 @@ describe Spotippos::ProvinceHelper do
   end
 
   describe '.find_provinces' do
-    before { $provinces = Spotippos::ProvinceHelper.parse('provinces.json') }
+    before { $provinces = Spotippos::ProvinceHelper.parse('config/provinces.json') }
 
     subject { Spotippos::ProvinceHelper.find_provinces(x, y) }
 
