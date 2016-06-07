@@ -21,7 +21,7 @@ class Spotippos::Property < ActiveRecord::Base
         self.provinces = Spotippos::ProvinceHelper.find_provinces(self.x, self.y)
     end
 
-    def to_json(options=nil)
+    def as_json(options=nil)
       {
         id: id,
         title: title,
@@ -33,7 +33,7 @@ class Spotippos::Property < ActiveRecord::Base
         baths: baths,
         provinces: provinces.split(','),
         squareMeters: square_meters
-      }.to_json(options)
+      }
     end
 end
 

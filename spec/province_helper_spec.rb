@@ -2,7 +2,7 @@ require 'spec_helper.rb'
 
 describe Spotippos::ProvinceHelper do
 
-  describe '#parse' do
+  describe '.parse' do
     let(:provinces) { Spotippos::ProvinceHelper.parse('provinces.json') }
 
     it 'parses all provinces' do
@@ -23,7 +23,7 @@ describe Spotippos::ProvinceHelper do
     end
   end
 
-  describe '#find_provinces' do
+  describe '.find_provinces' do
     before { $provinces = Spotippos::ProvinceHelper.parse('provinces.json') }
 
     subject { Spotippos::ProvinceHelper.find_provinces(x, y) }
@@ -33,20 +33,27 @@ describe Spotippos::ProvinceHelper do
         let(:y) { 1000 }
 
         it 'returns empty' do
-            expect(subject).to eq []
+            expect(subject).to eq ""
         end
     end
 
     context 'when province found' do
-      let(:x) { 400 }
-      let(:y) { 800 }
+      context 'and its in the province limit' do
+        let(:x) { 0 }
+        let(:y) { 800 }
 
-      it 'returns provinces' do
-        expect(subject.size).to eq 2
+        it 'returns only province name' do
+          expect(subject).to eq 'Gode'
+        end
       end
 
-      it 'returns only provinces name' do
-        expect(subject).to eq ['Gode', 'Ruja']
+      context 'and its in the province' do
+        let(:x) { 400 }
+        let(:y) { 800 }
+
+        it 'returns only provinces name' do
+          expect(subject).to eq 'Gode,Ruja'
+        end
       end
     end
   end

@@ -27,7 +27,7 @@ Given(/^I add properties with the following attributes:$/) do |table|
                                      "baths"=> row[6].to_i,
                                      "square_meters"=> row[7].to_i })
      prop.save
-     prop.id = row[8].to_i
+     prop.id = row[8].to_i if row[8]
      prop.save
   end
 end
