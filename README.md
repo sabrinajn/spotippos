@@ -1,4 +1,4 @@
-Deploy
+Deploy local
 -------------
 
 Instalar o docker, se preferir utilizando o homebrew
@@ -23,8 +23,16 @@ $ docker-compose run web rake db:create
 $ docker-compose run web rake db:migrate_up
 ```
 
-Testes
------------------
+App no Heroku
+---------------
+Fiz o deploy no heroku para facilitar os testes.
+
+https://spotippos-sabrinajn.herokuapp.com/
+
+
+
+Testes Unitários e de Aceitação
+--------------------------------
 
 Utilizei o rspec para escrever os testes unitários, segue o comando para executar os testes:
 ```sh
@@ -41,9 +49,14 @@ Executar
 
 ### 1. Criando imóveis em Spotippos
 
- request:
+request utilizando o docker:
 ```sh
 $ curl -H "Content-Type: application/json" -X POST http://$(docker-machine ip default):9292/properties -d '{"x": 667,"y": 556,"title": "Imóvel código 1, com 5 quartos e 4 banheiros","price": 1250000,"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.","beds": 4,"baths": 3,"squareMeters": 210}'
+```
+
+request utilizando o heroku:
+```sh
+$ curl -H "Content-Type: application/json" -X POST https://spotippos-sabrinajn.herokuapp.com/properties -d '{"x": 667,"y": 556,"title": "Imóvel código 1, com 5 quartos e 4 banheiros","price": 1250000,"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.","beds": 4,"baths": 3,"squareMeters": 210}'
 ```
 
 response:
@@ -57,9 +70,14 @@ response:
 
 ### 2. Mostre um imóvel específico em Spotippos
 
-request:
+request utilizando o docker:
 ```sh
 $ curl -H "Content-Type: application/json" -X GET http://$(docker-machine ip default):9292/properties/1
+```
+
+request utilizando o heroku:
+```sh
+$ curl -H "Content-Type: application/json" -X GET https://spotippos-sabrinajn.herokuapp.com/properties/1
 ```
 
 response:
@@ -83,9 +101,14 @@ response:
 
 ### 3. Busque imóveis em Spotippos
 
-request:
+request utilizando o docker:
 ```sh
 $ curl -H "Content-Type: application/json" -X GET "http://$(docker-machine ip default):9292/properties?ax=100&ay=700&bx=700&by=300"
+```
+
+request utilizando o heroku:
+```sh
+$ curl -H "Content-Type: application/json" -X GET "https://spotippos-sabrinajn.herokuapp.com/properties?ax=100&ay=700&bx=700&by=300"
 ```
 
 response:
