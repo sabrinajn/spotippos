@@ -48,6 +48,10 @@ $ curl -H "Content-Type: application/json" -X POST http://$(docker-machine ip de
 
 response:
 ```
+ HTTP/1.1 201 Created
+ Content-Type: text/html;charset=utf-8
+ Content-Length: 8
+
 { "id" : 1 }
 ```
 
@@ -81,7 +85,29 @@ response:
 
 request:
 ```sh
-$ curl -H "Content-Type: application/json" -X GET http://$(docker-machine ip default):9292/properties?ax=100&ay=700&bx=700&by=300
+$ curl -H "Content-Type: application/json" -X GET "http://$(docker-machine ip default):9292/properties?ax=100&ay=700&bx=700&by=300"
 ```
 
+response:
+```
+ HTTP/1.1 200 OK
+ Content-Type: text/html;charset=utf-8
+ Content-Length: 497
 
+{ "foundProperties":1,
+  "properties":[
+        {
+          "id":1,
+          "title":"Imóvel código 1, com 5 quartos e 4 banheiros",
+          "price":1250000,
+          "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "x":222,
+          "y":444,
+          "beds":4,
+          "baths":3,
+          "provinces":["Scavy"],
+          "squareMeters":210
+        }
+    ]
+}
+```
