@@ -39,7 +39,7 @@ $ docker-compose run web bundle exec cucumber
 Executar
 -----------------
 
-1. Criando imóveis em Spotippos
+### 1. Criando imóveis em Spotippos
 
  request:
 ```sh
@@ -55,7 +55,7 @@ response:
 { "id" : 1 }
 ```
 
-2. Mostre um imóvel específico em Spotippos
+### 2. Mostre um imóvel específico em Spotippos
 
 request:
 ```sh
@@ -81,7 +81,7 @@ response:
   }
 ```
 
-3. Busque imóveis em Spotippos
+### 3. Busque imóveis em Spotippos
 
 request:
 ```sh
