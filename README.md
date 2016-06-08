@@ -1,5 +1,3 @@
-
-
 Deploy
 -------------
 
@@ -25,6 +23,18 @@ $ docker-compose run web rake db:create
 $ docker-compose run web rake db:migrate_up
 ```
 
+Testes
+-----------------
+
+Utilizei o rspec para escrever os testes unitários, segue o comando para executar os testes:
+```sh
+docker-compose run web bundle exec rspec
+```
+
+Para os testes de aceitação, eu utilizei o cucumber. Execute-o com o seguinte comando:
+```sh
+docker-compose run web bundle exec cucumber
+```
 
 Executar
 -----------------
