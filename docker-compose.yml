@@ -7,7 +7,7 @@ db:
 
 web:
   build: .
-  command: bundle exec rackup -p 9292 config.ru
+  command: bundle exec rackup --host 0.0.0.0 -p 9292 config.ru
   ports:
     - "9292:9292"
   links:

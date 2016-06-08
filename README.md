@@ -1,20 +1,21 @@
 
 
-Pre requisitos
+Deploy
 -------------
 
-# Instalar o docker, se preferir utilizando o homebrew
+Instalar o docker, se preferir utilizando o homebrew
 
 ```sh
 $ brew cask install virtualbox
-$ brew install docker
-$ brew install boot2docker
+$ brew install docker docker-machine docker-compose
+```
 
+Inicializando o docker
 ```sh
-$ boot2docker init
-$ boot2docker up
 $ docker-machine create --driver virtualbox default
 $ eval $(docker-machine env default)
+$ docker-compose build
+$ docker-compose up -d
 ```
 
 Criando o banco e as tabelas
