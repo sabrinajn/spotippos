@@ -28,28 +28,60 @@ Testes
 
 Utilizei o rspec para escrever os testes unitários, segue o comando para executar os testes:
 ```sh
-docker-compose run web bundle exec rspec
+$ docker-compose run web bundle exec rspec
 ```
 
 Para os testes de aceitação, eu utilizei o cucumber. Execute-o com o seguinte comando:
 ```sh
-docker-compose run web bundle exec cucumber
+$ docker-compose run web bundle exec cucumber
 ```
 
 Executar
 -----------------
 
-Criando imóveis em Spotippos
+1. Criando imóveis em Spotippos
+
+ request:
 ```sh
-$ curl -H "Content-Type: application/json" -X POST http://$(docker-machine ip defau:9292/properties -d '{"x": 222,"y": 444,"title": "Imóvel código 1, com 5 quartos e 4 banheiros","price": 1250000,"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.","beds": 4,"baths": 3,"squareMeters": 210}'
+$ curl -H "Content-Type: application/json" -X POST http://$(docker-machine ip default):9292/properties -d '{"x": 667,"y": 556,"title": "Imóvel código 1, com 5 quartos e 4 banheiros","price": 1250000,"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.","beds": 4,"baths": 3,"squareMeters": 210}'
 ```
 
-Mostre um imóvel específico em Spotippos
-```sh
-$ curl -H "Content-Type: application/json" -X GET 'http://$(docker-machine ip default):9292/properties/1'
+response:
+```
+{ "id" : 1 }
 ```
 
-Busque imóveis em Spotippos
+2. Mostre um imóvel específico em Spotippos
+
+request:
 ```sh
-$ curl -H "Content-Type: application/json" -X GET 'http://$(docker-machine ip default):9292/properties?ax=0&ay=600&bx=500&by=300'
+$ curl -H "Content-Type: application/json" -X GET http://$(docker-machine ip default):9292/properties/1
 ```
+
+response:
+```
+ HTTP/1.1 200 OK
+ Content-Type: text/html;charset=utf-8
+ Content-Length: 230
+
+  { "id":1,
+    "title":"Imóvel código 1, com 5 quartos e 4 banheiros",
+    "price":1250000,
+    "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "x":222,
+    "y":444,
+    "beds":4,
+    "baths":3,
+    "provinces":["Scavy"],
+    "squareMeters":210
+  }
+```
+
+3. Busque imóveis em Spotippos
+
+request:
+```sh
+$ curl -H "Content-Type: application/json" -X GET http://$(docker-machine ip default):9292/properties?ax=100&ay=700&bx=700&by=300
+```
+
+
